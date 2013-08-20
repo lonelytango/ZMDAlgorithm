@@ -11,11 +11,7 @@
 @implementation NSArray (SearchAlgorithm)
 
 - (NSInteger)binarySearchForIndexOfObject:(id)object {
-    
-    NSInteger key = [self binarySearch:object inArray:self];
-    NSLog(@"binary search key: %d", key);
-    
-    return key;
+    return [self binarySearch:object inArray:self];
 }
 
 - (NSInteger)binarySearch:(id)object inArray:(NSArray *)array {
