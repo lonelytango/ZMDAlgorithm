@@ -10,6 +10,9 @@
 
 @implementation NSArray (SortingAlgorithm)
 
+
+#pragma mark - Insertion Sort
+
 - (NSArray *)insertionSort {
     
     //Do nothing if the array only has 1 object

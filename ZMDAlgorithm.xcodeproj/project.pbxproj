@@ -23,6 +23,7 @@
 		4D92FE0E17C2FCD0007375D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D92FE0C17C2FCD0007375D6 /* InfoPlist.strings */; };
 		4D92FE1017C2FCD0007375D6 /* ZMDAlgorithmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D92FE0F17C2FCD0007375D6 /* ZMDAlgorithmTests.m */; };
 		4D92FE1F17C31A7A007375D6 /* NSArray+SortingAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */; };
+		5DA9934017C3D0C3002637FB /* NSArray+SearchAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		4D92FE0F17C2FCD0007375D6 /* ZMDAlgorithmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMDAlgorithmTests.m; sourceTree = "<group>"; };
 		4D92FE1D17C31A7A007375D6 /* NSArray+SortingAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SortingAlgorithm.h"; sourceTree = "<group>"; };
 		4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SortingAlgorithm.m"; sourceTree = "<group>"; };
+		5DA9933E17C3D0C3002637FB /* NSArray+SearchAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SearchAlgorithm.h"; sourceTree = "<group>"; };
+		5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SearchAlgorithm.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 			children = (
 				4D92FE1D17C31A7A007375D6 /* NSArray+SortingAlgorithm.h */,
 				4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */,
+				5DA9933E17C3D0C3002637FB /* NSArray+SearchAlgorithm.h */,
+				5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				4D92FE1F17C31A7A007375D6 /* NSArray+SortingAlgorithm.m in Sources */,
 				4D92FDEE17C2FCD0007375D6 /* main.m in Sources */,
 				4D92FDF217C2FCD0007375D6 /* ZAAppDelegate.m in Sources */,
+				5DA9934017C3D0C3002637FB /* NSArray+SearchAlgorithm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +501,7 @@
 				4D92FE1517C2FCD0007375D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D92FE1617C2FCD0007375D6 /* Build configuration list for PBXNativeTarget "ZMDAlgorithmTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +510,7 @@
 				4D92FE1817C2FCD0007375D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
