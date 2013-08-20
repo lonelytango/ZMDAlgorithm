@@ -22,9 +22,11 @@
     //NSArray *arrayOfSortedNumbers = @[@3, @9, @123, @44, @54, @20, @1, @55, @90, @117, @10, @20, @29];
     NSArray *arrayOfSortedNumbers = @[@6, @10, @13, @5, @8, @3, @2, @11];
     
+    //NSArray *arrayOfSortedNumbers = @[@3, @7, @8, @5, @2, @1, @9, @5, @4];
+    
     //[arrayOfSortedNumbers binarySearchForIndexOfObject:@100];
     
-    NSLog(@"Quick Sorted: %@", [arrayOfSortedNumbers quickSort]);
+    [arrayOfSortedNumbers quickSort];
     
     //NSLog(@"Sorted Array: %@", [arrayOfAlphabets mergeSort]);
     

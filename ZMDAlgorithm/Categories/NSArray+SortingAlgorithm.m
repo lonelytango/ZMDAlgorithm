@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+SortingAlgorithm.h"
+#import "NSArray+Addition.h"
 
 @implementation NSArray (SortingAlgorithm)
 
@@ -102,7 +103,7 @@
     NSMutableArray *mutableArray = [self mutableCopy];
     
     //Mutable self would always retain the value (always passed by reference)
-    [self qsortArray:mutableArray begin:0 end:[self count]];
+    [self qsortArray:mutableArray begin:0 end:[self lastIndex]];
     
     return [mutableArray copy];
 }
@@ -119,32 +120,28 @@
 
 - (NSInteger)partitionWithArray:(NSMutableArray *)array begin:(NSInteger)begin end:(NSInteger)end {
     
+    id pivot = array[begin];
     int i = begin;
-    id pivot = array[i];
     
-    for (int j = begin + 1; j < end; j++) {
-        if ([array[j] compare:pivot] == (NSOrderedAscending|NSOrderedSame)) {
+    //NSLog(@"Pivot: %@", pivot);
+    
+    for (int j = i + 1; j <= end; j++) {
+        
+        if ([array[j] compare:pivot] == NSOrderedAscending || [array[j] compare:pivot] == NSOrderedSame) {
+            //NSLog(@"Swap: %@ @ [%d] and %@ @ [%d]", array[i], i, array[j], j);
             i += 1;
             [array exchangeObjectAtIndex:i withObjectAtIndex:j];
         }
     }
-    [array exchangeObjectAtIndex:begin withObjectAtIndex:i];
+    
+    if (begin != i) {
+        [array exchangeObjectAtIndex:begin withObjectAtIndex:i];
+    }
+    
+    //NSLog(@"Step: %@, Begin: %d, End: %d", [array oneLineDescription], begin, end);
+    //NSLog(@"================================================================");
     
     return i;
-}
-
-
-#pragma mark - Description
-
-- (NSString *)description {
-    NSMutableString *descriptionString = [NSMutableString new];
-    for (int i = 0; i < [self count]; i++) {
-        [descriptionString appendFormat:@"%@",self[i]];
-        if (i < [self count] - 1) {
-            [descriptionString appendString:@", "];
-        }
-    }
-    return [descriptionString copy];
 }
 
 @end

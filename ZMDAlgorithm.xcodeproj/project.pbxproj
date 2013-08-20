@@ -24,6 +24,7 @@
 		4D92FE1017C2FCD0007375D6 /* ZMDAlgorithmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D92FE0F17C2FCD0007375D6 /* ZMDAlgorithmTests.m */; };
 		4D92FE1F17C31A7A007375D6 /* NSArray+SortingAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */; };
 		5DA9934017C3D0C3002637FB /* NSArray+SearchAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */; };
+		5DA9934317C40F7D002637FB /* NSArray+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9934217C40F7D002637FB /* NSArray+Addition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SortingAlgorithm.m"; sourceTree = "<group>"; };
 		5DA9933E17C3D0C3002637FB /* NSArray+SearchAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SearchAlgorithm.h"; sourceTree = "<group>"; };
 		5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SearchAlgorithm.m"; sourceTree = "<group>"; };
+		5DA9934117C40F7D002637FB /* NSArray+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Addition.h"; sourceTree = "<group>"; };
+		5DA9934217C40F7D002637FB /* NSArray+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Addition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				4D92FE1E17C31A7A007375D6 /* NSArray+SortingAlgorithm.m */,
 				5DA9933E17C3D0C3002637FB /* NSArray+SearchAlgorithm.h */,
 				5DA9933F17C3D0C3002637FB /* NSArray+SearchAlgorithm.m */,
+				5DA9934117C40F7D002637FB /* NSArray+Addition.h */,
+				5DA9934217C40F7D002637FB /* NSArray+Addition.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			files = (
 				4D92FDFB17C2FCD0007375D6 /* ZAViewController.m in Sources */,
 				4D92FE1F17C31A7A007375D6 /* NSArray+SortingAlgorithm.m in Sources */,
+				5DA9934317C40F7D002637FB /* NSArray+Addition.m in Sources */,
 				4D92FDEE17C2FCD0007375D6 /* main.m in Sources */,
 				4D92FDF217C2FCD0007375D6 /* ZAAppDelegate.m in Sources */,
 				5DA9934017C3D0C3002637FB /* NSArray+SearchAlgorithm.m in Sources */,
