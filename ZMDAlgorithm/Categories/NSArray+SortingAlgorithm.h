@@ -21,4 +21,12 @@
 
 - (NSArray *)insertionSort;
 
+/**
+ *	MergeSort
+ *
+ *	@return	sorted array after merge sort.
+ */
+
+- (NSArray *)mergeSort;
+
 @end

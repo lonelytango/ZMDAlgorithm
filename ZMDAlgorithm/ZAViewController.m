@@ -19,16 +19,10 @@
 {
     [super viewDidLoad];
     
-    _arrayOfNumbers = @[@3, @1, @5, @2, @7, @0];
+    _arrayOfNumbers = @[@3, @1, @100, @5, @34, @14, @2, @7, @0, @10, @21];
     
-    //NSLog(@"Sorted Array: %@", [_arrayOfNumbers insertionSort]);
+    NSLog(@"Sorted Array: %@", [_arrayOfNumbers mergeSort]);
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
