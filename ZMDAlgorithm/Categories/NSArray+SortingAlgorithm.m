@@ -92,4 +92,59 @@
     return [mergedArray copy];
 }
 
+
+
+
+
+#pragma mark - Quick Sort
+
+- (NSArray *)quickSort {
+    NSMutableArray *mutableArray = [self mutableCopy];
+    
+    //Mutable self would always retain the value (always passed by reference)
+    [self qsortArray:mutableArray begin:0 end:[self count]];
+    
+    return [mutableArray copy];
+}
+
+
+- (void)qsortArray:(NSMutableArray *)array begin:(NSInteger)begin end:(NSInteger)end {
+    if (begin < end) {
+        int pivotIndex = [self partitionWithArray:array begin:begin end:end];
+        [self qsortArray:array begin:begin end:pivotIndex-1];
+        [self qsortArray:array begin:pivotIndex+1 end:end];
+    }
+}
+
+
+- (NSInteger)partitionWithArray:(NSMutableArray *)array begin:(NSInteger)begin end:(NSInteger)end {
+    
+    int i = begin;
+    id pivot = array[i];
+    
+    for (int j = begin + 1; j < end; j++) {
+        if ([array[j] compare:pivot] == (NSOrderedAscending|NSOrderedSame)) {
+            i += 1;
+            [array exchangeObjectAtIndex:i withObjectAtIndex:j];
+        }
+    }
+    [array exchangeObjectAtIndex:begin withObjectAtIndex:i];
+    
+    return i;
+}
+
+
+#pragma mark - Description
+
+- (NSString *)description {
+    NSMutableString *descriptionString = [NSMutableString new];
+    for (int i = 0; i < [self count]; i++) {
+        [descriptionString appendFormat:@"%@",self[i]];
+        if (i < [self count] - 1) {
+            [descriptionString appendString:@", "];
+        }
+    }
+    return [descriptionString copy];
+}
+
 @end

@@ -29,4 +29,11 @@
 
 - (NSArray *)mergeSort;
 
+/**
+ *	Quick Sort
+ *
+ *	@return	sorted array after quick sort.
+ */
+- (NSArray *)quickSort;
+
 @end
