@@ -10,6 +10,15 @@
 
 @interface NSArray (SortingAlgorithm)
 
+/**
+ *	InsertionSort
+ *
+ *	@return	sorted array after insertion sort.
+ *  
+ *  Worst case scenario is when the array is reverse sorted.
+ *  Moderately fast for small n, not at all for large n.
+ */
+
 - (NSArray *)insertionSort;
 
 @end
