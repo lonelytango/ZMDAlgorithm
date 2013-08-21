@@ -22,13 +22,18 @@
 
     //NSArray *arrayOfSortedNumbers = @[@3, @9, @123, @44, @54, @20, @1, @55, @90, @117, @10, @20, @29];
     //NSArray *arrayOfSortedNumbers = @[@6, @5, @3, @1, @8, @7, @2, @4];
-    NSArray *arrayOfSortedNumbers = @[@15, @19, @10, @7, @17, @16];
+    NSMutableSet *mutableSetNumber = [NSMutableSet new];
+    for (int i = 0; i < 20; i++) {
+        [mutableSetNumber addObject:@(arc4random()%200)];
+    }
     
     //NSArray *arrayOfSortedNumbers = @[@3, @7, @8, @5, @2, @1, @9, @5, @4];
     
     //[arrayOfSortedNumbers binarySearchForIndexOfObject:@100];
     
-    NSLog(@"Bubble Sort: %@", [[arrayOfSortedNumbers heapSort] oneLineDescription]);
+    NSArray *setNumber = [mutableSetNumber allObjects];
+    
+    NSLog(@"Bubble Sort: %@", [[setNumber treeSort] oneLineDescription]);
     
     //NSLog(@"Sorted Array: %@", [arrayOfAlphabets mergeSort]);
     

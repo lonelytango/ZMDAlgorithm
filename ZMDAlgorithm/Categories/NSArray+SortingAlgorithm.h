@@ -20,4 +20,7 @@
 - (NSArray *)bubbleSortSkipLastItem;
 - (NSArray *)bubbleSortTrackLastItem;
 
+
+- (NSArray *)treeSort;
+
 @end

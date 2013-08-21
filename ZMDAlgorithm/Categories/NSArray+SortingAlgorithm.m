@@ -9,6 +9,27 @@
 #import "NSArray+SortingAlgorithm.h"
 #import "NSArray+Addition.h"
 
+@interface Node : NSObject
+@property (nonatomic, strong) id value;
+@property (nonatomic, strong) Node *left;
+@property (nonatomic, strong) Node *right;
+@property (nonatomic, strong) Node *parent;
+-(id)initWithValue:(id)value;
+@end
+
+@implementation Node
+
+- (id)initWithValue:(id)value {
+    self = [super init];
+    if (self) {
+        _value = value;
+    }
+    return self;
+}
+
+@end
+
+
 @implementation NSArray (SortingAlgorithm)
 
 #pragma mark - Insertion Sort
@@ -302,5 +323,116 @@
     
     return [mutableArray copy];
 }
+
+
+
+#pragma mark - Tree Sort
+
+- (NSArray *)treeSort {
+    
+    if ([self count] <= 1) {
+        return self;
+    }
+    
+    //Get binary tree and take a root node.
+    Node *rootNode = [self generateBinaryTree:self];
+    
+    NSMutableArray *treeArray = [NSMutableArray new];
+    
+    Node *currentNode = rootNode;
+    
+    while (currentNode != nil) {
+        
+        //Shift to left first...
+        if (currentNode.left == nil) {
+            
+            //Add the value if there is no more left.
+            [treeArray addObject:currentNode.value];
+
+            
+            //Check if there is right...
+            
+            if (currentNode.right == nil) {
+                
+                //If the right is nil, move to parent.
+                currentNode = currentNode.parent;
+                
+                //If left is nil
+                if (currentNode.left == nil) {
+                    currentNode.right = nil;
+                    
+                    if (currentNode.parent != nil) {
+                        currentNode = currentNode.parent;
+                        currentNode.left = nil;
+                    
+                    } else {
+                        //DONE when the parnet is nil.
+                        currentNode = nil;
+                    }
+                }
+                
+                //Left is not nil
+                else {
+                    currentNode.left = nil;
+                }
+                
+            } else {
+                
+                //If there is right. go to the right.
+                currentNode = currentNode.right;
+                
+            }
+            
+        } else {
+            
+            //Keep on going.
+            currentNode = currentNode.left;
+        }
+        
+    }
+    
+    return treeArray;
+}
+
+- (Node *)generateBinaryTree:(NSArray *)array {
+    
+    Node *rootNode = [[Node alloc] initWithValue:self[0]];
+    
+    for (int i = 1; i < [array count]; i++) {
+        
+        Node *currentNode = rootNode;
+        Node *newNode = [[Node alloc] initWithValue:array[i]];
+        
+        //If new node value less than current node value, go to the left side of the tree.
+        while (currentNode != newNode) {
+            if([newNode.value compare:currentNode.value] == NSOrderedAscending) {
+                //If the left node has nothing,
+                if (currentNode.left == nil) {
+                    newNode.parent = currentNode;
+                    currentNode.left = newNode;
+                    currentNode = newNode;
+                    //NSLog(@"Left value: %@", newNode.value);
+                } else {
+                    currentNode = currentNode.left;
+                }
+                
+            } else {
+                if (currentNode.right == nil) {
+                    newNode.parent = currentNode;
+                    currentNode.right = newNode;
+                    currentNode = newNode;
+                    //NSLog(@"Right value: %@", newNode.value);
+                } else {
+                    currentNode = currentNode.right;
+                }
+            }
+        }
+    }
+    
+    NSLog(@"Done");
+    return rootNode;
+}
+
+
 
 @end
