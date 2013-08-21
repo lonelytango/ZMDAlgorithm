@@ -152,14 +152,17 @@
 - (NSArray *)heapSort {
     NSMutableArray *mutableArray = [self mutableCopy];
     
+    //Heapify the array so it's ready to be sorted.
     [self heapifyArray:mutableArray];
     
-    //NSLog(@"Heapified: %@", [mutableArray description]);
+    //NSLog(@"Heapified: %@", [mutableArray oneLineDescription]);
     
     int end = [mutableArray count] - 1;
     
     while (end > 0) {
         [mutableArray exchangeObjectAtIndex:end withObjectAtIndex:0];
+        
+        //NSLog(@"Sift Down Desc: %@", [mutableArray oneLineDescription]);
         
         end -= 1;
         
@@ -168,22 +171,11 @@
     return [mutableArray copy];
 }
 
-- (void)heapifyArray:(NSMutableArray *)array {
-    int arrayCount = [array count];
-    int start = (arrayCount - 2) / 2;
-    
-    while (start >= 0) {
-        [self siftDown:array start:start end:arrayCount - 1];
-        NSLog(@"Array Desc: %@", [array oneLineDescription]);
-        start -= 1;
-    }
-}
-
-
 - (void)siftDown:(NSMutableArray *)array start:(NSInteger)start end:(NSInteger)end {
     
     int root = start;
     while (root * 2 + 1 <= end) {
+        
         int child = root * 2 + 1;
         int swap = root;
         
@@ -192,18 +184,31 @@
             swap = child;
         }
         
+        //Check right child too, if it exists.
         if (child + 1 <= end && ([array[swap] compare:array[child + 1]] == NSOrderedAscending)) {
             swap = child + 1;
         }
         
+        //Swap it if the root is less than child.
         if (swap != root) {
             [array exchangeObjectAtIndex:root withObjectAtIndex:swap];
-            NSLog(@"Array Desc: %@", [array oneLineDescription]);
             root = swap;
         } else {
             return;
         }
     }
 }
+
+- (void)heapifyArray:(NSMutableArray *)array {
+    int arrayCount = [array count];
+    int start = (arrayCount - 2) / 2;
+    
+    while (start >= 0) {
+        [self siftDown:array start:start end:arrayCount - 1];
+        //NSLog(@"Heap Step Desc: %@", [array oneLineDescription]);
+        start -= 1;
+    }
+}
+
 
 @end
