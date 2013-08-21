@@ -15,4 +15,9 @@
 - (NSArray *)quickSort;
 - (NSArray *)heapSort;
 
+//This unoptimized bubble sort, which has an extra step at the end to make sure things are sorted.
+- (NSArray *)bubbleSort;
+- (NSArray *)bubbleSortSkipLastItem;
+- (NSArray *)bubbleSortTrackLastItem;
+
 @end

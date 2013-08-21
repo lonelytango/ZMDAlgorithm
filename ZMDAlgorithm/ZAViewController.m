@@ -28,7 +28,7 @@
     
     //[arrayOfSortedNumbers binarySearchForIndexOfObject:@100];
     
-    NSLog(@"Heap Sorted: %@", [[arrayOfSortedNumbers heapSort] oneLineDescription]);
+    NSLog(@"Bubble Sort: %@", [[arrayOfSortedNumbers heapSort] oneLineDescription]);
     
     //NSLog(@"Sorted Array: %@", [arrayOfAlphabets mergeSort]);
     

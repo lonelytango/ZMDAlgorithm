@@ -11,7 +11,6 @@
 
 @implementation NSArray (SortingAlgorithm)
 
-
 #pragma mark - Insertion Sort
 
 - (NSArray *)insertionSort {
@@ -150,6 +149,11 @@
 #pragma mark - Heap Sort
 
 - (NSArray *)heapSort {
+    
+    if ([self count] <= 1) {
+        return self;
+    }
+    
     NSMutableArray *mutableArray = [self mutableCopy];
     
     //Heapify the array so it's ready to be sorted.
@@ -168,6 +172,7 @@
         
         [self siftDown:mutableArray start:0 end:end];
     }
+    
     return [mutableArray copy];
 }
 
@@ -210,5 +215,92 @@
     }
 }
 
+
+
+
+#pragma mark - Bubble Sort
+
+- (NSArray *)bubbleSort {
+    
+    if ([self count] <= 1) {
+        return self;
+    }
+    
+    NSMutableArray *mutableArray = [self mutableCopy];
+    
+    BOOL swapped = YES;
+    while (swapped) {
+        swapped = NO;
+        for (int i = 1; i < [self count]; i++) {
+            //If A[i-1] > A[i]
+            if ([mutableArray[i-1] compare:mutableArray[i]] == NSOrderedDescending) {
+                [mutableArray exchangeObjectAtIndex:i-1 withObjectAtIndex:i];
+                swapped = YES;
+            }
+        }
+        //NSLog(@"Sort step: %@", [mutableArray oneLineDescription]);
+    }
+    
+    return [mutableArray copy];
+}
+
+- (NSArray *)bubbleSortSkipLastItem {
+    
+    if ([self count] <= 1) {
+        return self;
+    }
+    
+    NSMutableArray *mutableArray = [self mutableCopy];
+    
+    int n = [mutableArray count];
+    
+    BOOL swapped = YES;
+    while (swapped) {
+        swapped = NO;
+        
+        for (int i = 1; i < n; i++) {
+            if ([mutableArray[i-1] compare:mutableArray[i]] == NSOrderedDescending) {
+                [mutableArray exchangeObjectAtIndex:i-1 withObjectAtIndex:i];
+                swapped = YES;
+            }
+        }
+        
+        //NSLog(@"Sort step: %@, n = %d", [mutableArray oneLineDescription], n);
+        
+        //The idea is that everytime we finish inner loop, the last element will always be in it's final position, so we can skip it.
+        n -= 1;
+    }
+    
+    return [mutableArray copy];
+}
+
+
+- (NSArray *)bubbleSortTrackLastItem {
+    if ([self count] <= 1) {
+        return self;
+    }
+    
+    NSMutableArray *mutableArray = [self mutableCopy];
+    
+    int n = [mutableArray count];
+    while (n != 0) {
+        int newn = 0;
+        
+        for (int i = 1; i < n; i++) {
+            if ([mutableArray[i-1] compare:mutableArray[i]] == NSOrderedDescending) {
+                [mutableArray exchangeObjectAtIndex:i-1 withObjectAtIndex:i];
+                newn = i;
+            }
+        }
+        
+        //There might be more than the last item is each time is sorted,
+        //each time we can skip all the sorted items at the end.
+        n = newn;
+        
+        //NSLog(@"Sort step: %@, n = %d", [mutableArray oneLineDescription], n);
+    }
+    
+    return [mutableArray copy];
+}
 
 @end
