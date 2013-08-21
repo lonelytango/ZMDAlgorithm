@@ -144,4 +144,66 @@
     return i;
 }
 
+
+
+
+#pragma mark - Heap Sort
+
+- (NSArray *)heapSort {
+    NSMutableArray *mutableArray = [self mutableCopy];
+    
+    [self heapifyArray:mutableArray];
+    
+    //NSLog(@"Heapified: %@", [mutableArray description]);
+    
+    int end = [mutableArray count] - 1;
+    
+    while (end > 0) {
+        [mutableArray exchangeObjectAtIndex:end withObjectAtIndex:0];
+        
+        end -= 1;
+        
+        [self siftDown:mutableArray start:0 end:end];
+    }
+    return [mutableArray copy];
+}
+
+- (void)heapifyArray:(NSMutableArray *)array {
+    int arrayCount = [array count];
+    int start = (arrayCount - 2) / 2;
+    
+    while (start >= 0) {
+        [self siftDown:array start:start end:arrayCount - 1];
+        NSLog(@"Array Desc: %@", [array oneLineDescription]);
+        start -= 1;
+    }
+}
+
+
+- (void)siftDown:(NSMutableArray *)array start:(NSInteger)start end:(NSInteger)end {
+    
+    int root = start;
+    while (root * 2 + 1 <= end) {
+        int child = root * 2 + 1;
+        int swap = root;
+        
+        //Check if root is less than the left child.
+        if ([array[swap] compare:array[child]] == NSOrderedAscending) {
+            swap = child;
+        }
+        
+        if (child + 1 <= end && ([array[swap] compare:array[child + 1]] == NSOrderedAscending)) {
+            swap = child + 1;
+        }
+        
+        if (swap != root) {
+            [array exchangeObjectAtIndex:root withObjectAtIndex:swap];
+            NSLog(@"Array Desc: %@", [array oneLineDescription]);
+            root = swap;
+        } else {
+            return;
+        }
+    }
+}
+
 @end

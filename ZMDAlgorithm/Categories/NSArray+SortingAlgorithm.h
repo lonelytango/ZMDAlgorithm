@@ -13,5 +13,6 @@
 - (NSArray *)insertionSort;
 - (NSArray *)mergeSort;
 - (NSArray *)quickSort;
+- (NSArray *)heapSort;
 
 @end
