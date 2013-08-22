@@ -144,18 +144,25 @@
     
     //NSLog(@"Pivot: %@", pivot);
     
+    //NSLog(@"Array Start: %@", [array oneLineDescription]);
+    
     for (int j = i + 1; j <= end; j++) {
         
         if ([array[j] compare:pivot] == NSOrderedAscending || [array[j] compare:pivot] == NSOrderedSame) {
             //NSLog(@"Swap: %@ @ [%d] and %@ @ [%d]", array[i], i, array[j], j);
             i += 1;
-            [array exchangeObjectAtIndex:i withObjectAtIndex:j];
+            if (i != j) {
+                [array exchangeObjectAtIndex:i withObjectAtIndex:j];
+                //NSLog(@"Array Step: %@", [array oneLineDescription]);
+            }
         }
     }
     
     if (begin != i) {
         [array exchangeObjectAtIndex:begin withObjectAtIndex:i];
     }
+    
+    //NSLog(@"Array End: %@", [array oneLineDescription]);
     
     //NSLog(@"Step: %@, Begin: %d, End: %d", [array oneLineDescription], begin, end);
     //NSLog(@"================================================================");
