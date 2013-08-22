@@ -29,7 +29,6 @@
 
 @end
 
-
 @implementation NSArray (SortingAlgorithm)
 
 #pragma mark - Insertion Sort
@@ -167,6 +166,7 @@
 
 
 
+
 #pragma mark - Heap Sort
 
 - (NSArray *)heapSort {
@@ -235,6 +235,7 @@
         start -= 1;
     }
 }
+
 
 
 
@@ -326,6 +327,8 @@
 
 
 
+
+
 #pragma mark - Tree Sort
 
 - (NSArray *)treeSort {
@@ -343,52 +346,41 @@
     
     while (currentNode != nil) {
         
-        //Shift to left first...
-        if (currentNode.left == nil) {
-            
-            //Add the value if there is no more left.
+        if (currentNode.left != nil) {
+            currentNode = currentNode.left;
+        
+        } else {
+            //Left side is done.
             [treeArray addObject:currentNode.value];
-
             
-            //Check if there is right...
+            //NSLog(@"Tree Array step: %@", [treeArray oneLineDescription]);
             
-            if (currentNode.right == nil) {
+            if (currentNode.right != nil) {
+                //Set right node to parent's left node.
                 
-                //If the right is nil, move to parent.
-                currentNode = currentNode.parent;
-                
-                //If left is nil
-                if (currentNode.left == nil) {
-                    currentNode.right = nil;
-                    
-                    if (currentNode.parent != nil) {
-                        currentNode = currentNode.parent;
-                        currentNode.left = nil;
-                    
-                    } else {
-                        //DONE when the parnet is nil.
-                        currentNode = nil;
-                    }
+                if (currentNode.parent != nil) {
+                    //Connect it
+                    currentNode.parent.left = currentNode.right;
+                    currentNode.right.parent = currentNode.parent;
+                } else {
+                    currentNode.right.parent = nil;
                 }
                 
-                //Left is not nil
-                else {
-                    currentNode.left = nil;
-                }
-                
-            } else {
-                
-                //If there is right. go to the right.
+                //Set current node to the right node.
                 currentNode = currentNode.right;
                 
+            } else {
+                //No right node, shift up, remove node.
+                if (currentNode.parent != nil) {
+                    currentNode = currentNode.parent;
+                    currentNode.left = nil;
+                } else {
+                    
+                    //ALL DONE.
+                    currentNode = nil;
+                }
             }
-            
-        } else {
-            
-            //Keep on going.
-            currentNode = currentNode.left;
         }
-        
     }
     
     return treeArray;
@@ -429,10 +421,7 @@
         }
     }
     
-    NSLog(@"Done");
     return rootNode;
 }
-
-
 
 @end

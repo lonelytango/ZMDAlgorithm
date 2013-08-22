@@ -14,13 +14,12 @@
 - (NSArray *)mergeSort;
 - (NSArray *)quickSort;
 - (NSArray *)heapSort;
+- (NSArray *)treeSort;
 
 //This unoptimized bubble sort, which has an extra step at the end to make sure things are sorted.
 - (NSArray *)bubbleSort;
 - (NSArray *)bubbleSortSkipLastItem;
 - (NSArray *)bubbleSortTrackLastItem;
 
-
-- (NSArray *)treeSort;
 
 @end
